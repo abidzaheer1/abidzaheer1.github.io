@@ -1,2 +1,131 @@
-<iframe style="border: 1px solid #0000001a;" width="1500" height="800" src="https://app.uizard.io/p/5129ab00/embed" allowfullscreen></iframe>
-<a href="roadmap.html">raod map for nestjs-nextjs</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Roadmap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Learning Roadmap for Next.js & NestJS</h2>
+        <div id="accordion">
+            <!-- Roadmap topics will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const roadmapData = [
+            {
+                title: "Foundation in JavaScript",
+                subTopics: [
+                    { text: "Basics of JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+                    { text: "JavaScript.info", link: "https://javascript.info/" },
+                    { text: "Asynchronous JavaScript", link: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous" },
+                    { text: "ES6+ Features", link: "https://javascript.info/es-modern" }
+                ]
+            },
+            {
+                title: "Basics of Node.js",
+                subTopics: [
+                    { text: "Node.js Fundamentals", link: "https://nodejs.org/en/docs/" },
+                    { text: "Working with NPM", link: "https://docs.npmjs.com/" },
+                    { text: "The Complete Node.js Developer Course", link: "https://www.udemy.com/course/the-complete-nodejs-developer-course-2/" }
+                ]
+            },
+            {
+                title: "Introduction to Next.js",
+                subTopics: [
+                    { text: "Setting up Next.js", link: "https://nextjs.org/docs" },
+                    { text: "Next.js Routing", link: "https://nextjs.org/docs/routing/introduction" },
+                    { text: "Learn Next.js - Official Tutorial", link: "https://nextjs.org/learn" }
+                ]
+            },
+            {
+                title: "Introduction to NestJS",
+                subTopics: [
+                    { text: "NestJS Fundamentals", link: "https://docs.nestjs.com/" },
+                    { text: "NestJS - The Complete Developer's Guide", link: "https://www.udemy.com/course/nestjs-zero-to-hero/" },
+                    { text: "RESTful APIs with NestJS", link: "https://docs.nestjs.com/controllers" }
+                ]
+            },
+            {
+                title: "Advanced Topics and Integration",
+                subTopics: [
+                    { text: "Integrating Next.js with NestJS", link: "https://trilon.io/blog/nestjs-nextjs" },
+                    { text: "Advanced React Patterns", link: "https://reactpatterns.com/" },
+                    { text: "NestJS Advanced Concepts", link: "https://docs.nestjs.com/techniques/microservices" }
+                ]
+            },
+            {
+                title: "Continuous Learning and Practice",
+                subTopics: [
+                    { text: "Contributing to Open Source Projects", link: "https://opensource.guide/how-to-contribute/" },
+                    { text: "Stay Updated with Framework Trends", link: "https://github.com/trending/javascript" },
+                    { text: "Problem-Solving Skills", link: "https://leetcode.com/" }
+                ]
+            }
+        ];
+    
+
+    const accordion = document.getElementById('accordion');
+
+    roadmapData.forEach((topic, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const cardHeader = document.createElement('div');
+        cardHeader.className = 'card-header';
+        cardHeader.id = `heading${index}`;
+
+        const h5 = document.createElement('h5');
+        h5.className = 'mb-0';
+
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-link';
+        btn.setAttribute('data-toggle', 'collapse');
+        btn.setAttribute('data-target', `#collapse${index}`);
+        btn.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-controls', `collapse${index}`);
+        btn.textContent = topic.title;
+
+        h5.appendChild(btn);
+        cardHeader.appendChild(h5);
+        card.appendChild(cardHeader);
+
+        const collapse = document.createElement('div');
+        collapse.id = `collapse${index}`;
+        collapse.className = 'collapse' + (index === 0 ? ' show' : '');
+        collapse.setAttribute('aria-labelledby', `heading${index}`);
+        collapse.setAttribute('data-parent', '#accordion');
+
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        const sublist = document.createElement('ul');
+        topic.subTopics.forEach(sub => {
+            const subItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = sub.link;
+            link.target = "_blank";
+            link.textContent = sub.text;
+            subItem.appendChild(link);
+            sublist.appendChild(subItem);
+        });
+
+        cardBody.appendChild(sublist);
+        collapse.appendChild(cardBody);
+        card.appendChild(collapse);
+        accordion.appendChild(card);
+    });
+});
+
+    </script>
+</body>
+</html>
